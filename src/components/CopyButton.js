@@ -24,7 +24,7 @@ const CopyButton = ({ userId }) => {
 
   return (
     <Button onClick={() => {
-        navigator.clipboard.writeText(`https://mern-links.netlify.app/${userId}`)
+        navigator.clipboard.writeText(`https://mern-linky.herokuapp.com/${userId}`)
         setCopied(true)
         setTimeout(() => {
             setCopied(false)
