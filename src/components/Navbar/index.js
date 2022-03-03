@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <>
       {
-        location.pathname !== '/' && !loading ?
+        location.pathname !== '/'  ?
           <Wrapper>
               <Brand>LINKY</Brand>
               {

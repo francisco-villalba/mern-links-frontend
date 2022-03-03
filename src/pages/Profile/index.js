@@ -5,13 +5,15 @@ import { Wrapper as Avatar } from '../../components/Avatar/Avatar.styles'
 import { useParams } from 'react-router-dom'
 import { getData, getProfile } from '../../api'
 import { useGlobalContext } from '../../context'
+import avatar from '../../media/avatar.jpg'
+import CopyButton from '../../components/CopyButton'
 
 const Profile = () => {
   const { setLoading } = useGlobalContext()
   const [data, setData] = useState(null)
   const { state, dispatch } = useGlobalContext()
   const id = useParams().id
-
+  
   useEffect(() => {
     try {
       const fetchData = async () => {
@@ -38,10 +40,13 @@ const Profile = () => {
           <Wrapper theme={themes.find((t) => t.name === data.user.theme)}>
             <Info theme={themes.find((t) => t.name === data.user.theme)}>
               <Avatar className='avatar'>
-                <img src={data.user.image} alt="Avatar" />
+                <img src={data.user.image || avatar} alt="Avatar" />
               </Avatar>
               <h1>{data.user.nickname}</h1>
-              <p>{data.user.description}</p>
+              {
+                data.user.description &&
+                <p>{data.user.description}</p>
+              }
 
             </Info>
 
@@ -52,6 +57,10 @@ const Profile = () => {
                   {link.title}
                 </Link>
               ))}
+              {
+                state.isLoggedIn &&
+                  <CopyButton userId={state.user._id} />
+              }
             </Links>
           </Wrapper>
         </>

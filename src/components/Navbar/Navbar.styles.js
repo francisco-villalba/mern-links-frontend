@@ -17,7 +17,6 @@ export const Wrapper = styled.nav`
         
         :nth-of-type(1) {
             margin-right: 2rem;
-
         }
     }
 `

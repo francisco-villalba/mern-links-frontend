@@ -1,6 +1,7 @@
 import React from "react"
 import { Wrapper, Overlay } from "./Avatar.styles"
 import {BsFillPencilFill} from 'react-icons/bs'
+import avatar from '../../media/avatar.jpg'
 
 const Avatar = ({ data, setData, editMode}) => {
 
@@ -10,7 +11,7 @@ const Avatar = ({ data, setData, editMode}) => {
       fileReader.readAsDataURL(file)
       fileReader.onload = () => {
         resolve(fileReader.result)
-      };
+      }
       fileReader.onerror = (error) => {
         reject(error)
       }
@@ -24,18 +25,12 @@ const Avatar = ({ data, setData, editMode}) => {
   return (
 
     <Wrapper>
-      <img
-        src={
-          data.image
-            ? data.image
-            : "https://i.pinimg.com/736x/65/25/a0/6525a08f1df98a2e3a545fe2ace4be47.jpg"
-          }
+      <img src={data.image || avatar}
           alt="Avatar"
       />
       {
         editMode &&
         <Overlay htmlFor="file-upload">
-          {/* <label htmlFor="input"> */}
             <BsFillPencilFill />
             <input
               id='file-upload'
@@ -44,7 +39,6 @@ const Avatar = ({ data, setData, editMode}) => {
               accept=".jpeg, .png, .jpg"
               onChange={handleUpload}
             />
-          {/* </label> */}
         </Overlay>
       }
     </Wrapper>

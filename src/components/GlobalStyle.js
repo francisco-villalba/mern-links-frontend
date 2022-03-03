@@ -45,6 +45,7 @@ export default createGlobalStyle`
         bottom: 2rem;
         color: green;
         animation: spin 1s linear infinite;
+        z-index: 3;
 
         @keyframes spin {
             from {

@@ -6,18 +6,21 @@ import Theme from '../Theme'
 import { Wrapper, Item, Button } from './Sidebar.styles'
 
 const Sidebar = () => {
-  const { state, dispatch, setMessage } = useGlobalContext()
+  const { state, dispatch, setMessage, setLoading } = useGlobalContext()
   const [data, setData] = useState(state.user)
   const [editMode, setEditMode] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+    setLoading(true)
+    
     try {
       await editUser(data)
       dispatch({ type: 'EDIT_USER', data })
       setEditMode(false)
+      setLoading(false)
     } catch (error) {
+      setLoading(false)
       setMessage(error.response?.data.error || 'Something went wrong')
       setTimeout(() => {
         setMessage(null)

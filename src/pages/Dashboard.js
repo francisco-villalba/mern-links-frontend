@@ -6,7 +6,7 @@ import { useGlobalContext } from '../context'
 import Message from '../components/Message'
 
 const Dashboard = () => {
-  const { dispatch, loading, setLoading, message, setMessage } = useGlobalContext()
+  const { dispatch, state, setLoading, setMessage } = useGlobalContext()
 
   useEffect( () => {
       const fetchData = async() => {
@@ -28,13 +28,13 @@ const Dashboard = () => {
   return (
     <div className='container'>
       {
-        !loading && !message &&
+        // !loading && !message &&
+        state.user &&
         <>
           <Sidebar />
           <Links />
         </>
       }
-      { message && <Message message={message}/>}
     </div>
   )
 }
