@@ -9,7 +9,7 @@ App in the style of BEACONS, LINKTR, etc. Provides an easy interface to add link
 3. MongoDB
 3. JWT Auth
 
-[Live Demo](https://mern-linky.herokuapp.com/)
+[Live Demo](https://mern-links.netlify.app/)
 
 ![Screenshot 1](1.png)
 ![Screenshot 2](2.png)
